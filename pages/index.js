@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
+import Image from "next/image";
+
+//internal import
+import { ERC20ICOContext } from "../context/HazzyToken";
 
 const Home = () => {
-  return <div>Home11</div>;
+  const { HazzyToken } = useContext(ERC20ICOContext);
+  return <div>{HazzyToken} </div>;
 };
 
 export default Home;

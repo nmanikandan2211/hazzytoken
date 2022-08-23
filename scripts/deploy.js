@@ -2,7 +2,7 @@ const hre = require("hardhat");
 
 async function main() {
   const HazzyToken = await hre.ethers.getContractFactory("HazzyToken");
-  const hazzyToken = await HazzyToken.deploy();
+  const hazzyToken = await HazzyToken.deploy(1000000);
 
   await hazzyToken.deployed();
 
