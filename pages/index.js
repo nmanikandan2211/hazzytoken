@@ -5,8 +5,29 @@ import Image from "next/image";
 import { ERC20ICOContext } from "../context/HazzyToken";
 
 const Home = () => {
-  const { HazzyToken } = useContext(ERC20ICOContext);
-  return <div>{HazzyToken} </div>;
+  const {
+    checkConnection,
+    ERCHazzyToken,
+    transferToken,
+    tokenHolderData,
+    holderArray,
+    NoOfToken,
+    TokenName,
+    TokenStandard,
+    TokenSymbol,
+    TokenOwner,
+    account,
+    accountBalance,
+    TokenOwnerBal,
+    userId,
+  } = useContext(ERC20ICOContext);
+
+  useEffect(() => {
+    checkConnection();
+    tokenHolderData();
+  }, []);
+
+  return <div>Home </div>;
 };
 
 export default Home;
