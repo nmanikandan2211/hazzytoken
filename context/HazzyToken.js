@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "React";
+import React, { useState, useEffect, useContext } from "react";
 import Web3Modal from "web3modal";
 import { ethers } from "ethers";
 
@@ -12,10 +12,10 @@ export const ERC20ICOContext = React.createContext();
 
 export const ERC20Provider = ({ children }) => {
   //---USER ACCOUNT
-  const [holderArray, setHolderArray] = useState([]);
   const [account, setAccount] = useState("");
   const [accountBalance, setAccountBalance] = useState("");
   const [userId, setUserId] = useState("");
+  const [holderArray, setHolderArray] = useState([]);
 
   //----TOKEN INFO
   const [NoOfToken, setNOofToken] = useState("");
@@ -60,8 +60,9 @@ export const ERC20Provider = ({ children }) => {
       const web3modal = new Web3Modal();
       const connection = await web3modal.connect();
       const provider = new ethers.providers.Web3Provider(connection);
-      const signer =
-        provider.getSigner(0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266);
+      const signer = provider.getSigner(
+        "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266"
+      );
       const contract = fetchContractERC20(signer);
 
       //----TOKEN SUPPLY
@@ -87,7 +88,7 @@ export const ERC20Provider = ({ children }) => {
 
       //-----OWNER TOKEN BALANCE
       const balanceToken = await contract.balanceOf(
-        0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+        "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266"
       );
       setTokenOwnerBal(balanceToken.toNumber());
 
